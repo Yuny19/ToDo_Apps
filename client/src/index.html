@@ -1,0 +1,217 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="login-page">
+        <div class="container">
+            <div class="row py-5 align-items-center">
+                <!-- For Demo Purpose -->
+                <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                    <img src="https://i.pinimg.com/736x/22/9c/e5/229ce55dcfaec638721108563ed44306.jpg" alt=""
+                        class="img-fluid mb-3 d-none d-md-block" style="width: 300px; height: 500px;">
+                </div>
+
+                <!-- Registeration Form -->
+                <div id="register" class="col-md-7 col-lg-6 ml-auto">
+                    <h1 style="margin-bottom: 20px; text-align: center; color: rgb(229, 153, 153);">Create an Account
+                    </h1>
+                    <form action="#">
+                        <div class="row">
+
+                            <!-- Name -->
+                            <div class="input-group col-lg-10 mb-4 offset-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="fa fa-user text-muted"></i>
+                                    </span>
+                                </div>
+                                <input id="name" type="text" name="name" placeholder="Name"
+                                    class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+                            <!-- Email Address -->
+                            <div class="input-group col-lg-10 mb-4 offset-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="fa fa-envelope text-muted"></i>
+                                    </span>
+                                </div>
+                                <input id="email" type="email" name="email" placeholder="Email Address"
+                                    class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+                            <!-- Password -->
+                            <div class="input-group col-lg-10 mb-4 offset-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="fa fa-lock text-muted"></i>
+                                    </span>
+                                </div>
+                                <input id="password" type="password" name="password" placeholder="Password"
+                                    class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+
+                            <!-- Submit Button -->
+                            <div class="form-group col-lg-10 mx-auto mb-0">
+                                <a id="btn-register" class="btn-register btn-block py-2">
+                                    <span class="font-weight-bold">Create your account</span>
+                                </a>
+                            </div>
+
+
+                            <!-- Already Registered -->
+                            <div class="text-center w-100">
+                                <p class="text-muted p-card">Already Registered? <a id="click-login"
+                                        class="text-primary ml-2">Login</a></p>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div id="login" class="col-md-7 col-lg-6 ml-auto">
+                    <h1 style="margin-bottom: 20px; text-align: center; color: rgb(229, 153, 153);">Login
+                    </h1>
+                    <form action="#">
+                        <div class="row">
+                            <!-- Email Address -->
+                            <div class="input-group col-lg-10 mb-4 offset-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="fa fa-envelope text-muted"></i>
+                                    </span>
+                                </div>
+                                <input id="email-login" type="email" placeholder="Email Address"
+                                    class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+                            <!-- Password -->
+                            <div class="input-group col-lg-10 mb-4 offset-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                        <i class="fa fa-lock text-muted"></i>
+                                    </span>
+                                </div>
+                                <input id="password-login" type="password" placeholder="Password"
+                                    class="form-control bg-white border-left-0 border-md">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group col-lg-10 mx-auto mb-0">
+                                <a id="btn-login" class="btn-register btn-block py-2">
+                                    <span class="font-weight-bold">Login</span>
+                                </a>
+                            </div>
+
+                            <!-- Register page -->
+                            <div class="text-center w-100">
+                                <p class="text-muted p-card">You don't have account? <a id="click-register"
+                                        class="text-primary ml-2">click here</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard">
+        <nav class="navbar navbar-expand-md navbar-dark bg-teal">
+            <a class="navbar-brand" href="#">TO DO LIST APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ml-auto">
+                    <div class="nav-item">
+                        <a id="task" class="nav-link">tasks</a>
+                    </div>
+                    <div class="nav-item">
+                        <a id="project" class="nav-link">projects</a>
+                    </div>
+                    <div class="nav-item" style="padding-left: 25px;color: white;padding-top: 5px;">|</div>
+                </div>
+                <div class="navbar-nav">
+                    <div class="nav-item" style="padding-left: 25px; padding-right: 20px; color: white;">
+                        <i class="fa fa-user" aria-hidden="true"></i> Hello, <span id="username"></span>
+                    </div>
+                    <div class="nav-item">
+                        <button class="btn-log-out" id="signOut">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div id="task-content" class="card-body">
+                <div class="mb-1 float-right">
+                    <button class="btn-task"><i class="fa fa-plus" aria-hidden="true"></i> add task</button>
+                </div>
+                <table class="table table-striped">
+                    <thead class="th-teal">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Project</th>
+                            <th scope="col">Assign</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-content">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="container-project">
+                <div class="mb-2 d-flex justify-content-end" style="padding-top: 20px;">
+                    <button class="btn-task" data-toggle="modal" data-target="#add-project"><i class="fa fa-plus"></i>
+                        add Project</button>
+                </div>
+                <div id="project-content" class="card-body content-center">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal add project-->
+    <div class="modal fade" id="add-project" tabindex="-1" role="dialog" aria-labelledby="add-project-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add-project-label" style="color: teal;">Add your project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                          <label for="project-name">Name</label>
+                          <input type="text" class="form-control" id="project-name">
+                        </div>
+                        <div class="form-group">
+                          <label for="project-desc">Description</label>
+                          <input type="text" class="form-control" id="project-desc">
+                        </div>
+                      </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btn-add-project" class="btn-register">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal project -->
+</body>
+<script src="../stylesheet/js/index.js"></script>
+
+</html>

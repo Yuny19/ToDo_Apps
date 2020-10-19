@@ -1,0 +1,142 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+.bg-teal {
+    background-color: teal !important;
+}
+
+.box-shadow-hover:hover {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.card-box {
+    border-color: teal !important;
+}
+
+.text-primary{
+    cursor: pointer;
+}
+
+h3 {
+    color: teal;
+}
+
+.p-card {
+    font-size: 12px;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.th-teal {
+    background-color: rgb(25, 80, 80) !important;
+    color: white;
+}
+
+.btn-log-out {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.btn-task {
+    background-color: rgb(229, 153, 153);
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 5px;
+    font-family: monospace;
+}
+
+.table {
+    font-family: monospace;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.btn-task:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    outline: none;
+    border: 2px solid rgb(184, 92, 92);
+    color: gray;
+    background-color: white;
+}
+
+.btn-task:focus{
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    outline: none;
+}
+
+.btn-register {
+    background-color: teal;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+}
+
+.btn-register:hover {
+    color: gray;
+    outline: none;
+    text-decoration: none;
+    background-color: white;
+    border: 2px solid teal;
+    box-shadow: gray;
+    cursor: pointer;
+}
+
+.btn-cancel{
+    background-color: gray;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+}
+
+.btn-cancel:hover {
+    color: gray;
+    outline: none;
+    text-decoration: none;
+    background-color: white;
+    border: 2px solid gray;
+    box-shadow: gray;
+    cursor: pointer;
+}
+
+.btn-log-out:focus {
+    outline: none;
+}
+
+.btn-log-out:hover {
+    color: gray;
+}
+
+.form-control:not(select) {
+    padding: 1.5rem 0.5rem;
+}
+
+select.form-control {
+    height: 52px;
+    padding-left: 0.5rem;
+}
+
+.form-control::placeholder {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.content-center {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
