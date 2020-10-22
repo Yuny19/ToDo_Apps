@@ -1,15 +1,22 @@
 const ProjectMember = require('../model/project-member.model');
-
+const User = require('../model/user.model');
 const sendMail = require('../helpers/send-mail.helper');
 
 class ProjectMemberController {
-    static addMember(req, res) {
-        ProjectMember.create(req.body)
-            .populate('user')
-            .populate('project')
+    static sendMail(req, res) {
+        let html = `<b> yupa zup</b>`
+
+        User.findOne({ _id: req.body.member })
             .then(data => {
-                let text =`you added in project ${data.project.name}`
-                sendMail(data.user.email, "PROJECT ADD MEMBER", text);
+                sendMail(data.email, "PROJECT ADD MEMBER", html);
+            })
+    }
+    static addMember(req, res) {
+        ProjectMember.create({
+            project: req.params.projectId,
+            member: req.params.member
+        })
+            .then(data => {
                 res.status(200).json(data);
             })
             .catch(err => {
@@ -30,8 +37,8 @@ class ProjectMemberController {
     }
 
     static getMember(req, res) {
-        ProjectMember.find({ project: req.params.projectId})
-        .populate('member', 'name')
+        ProjectMember.find({ project: req.params.projectId })
+            .populate('member')
             .then((data) => {
                 res.status(200).json(data)
             })

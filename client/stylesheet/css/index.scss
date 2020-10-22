@@ -44,6 +44,18 @@ h3 {
     color: white;
 }
 
+.btn-back{
+    background-color: transparent;
+    border: none;
+    color: teal;
+}
+
+.btn-back:hover{
+    background-color: transparent;
+    border: none;
+    color: gray;
+}
+
 .btn-task {
     background-color: rgb(229, 153, 153);
     border-radius: 4px;

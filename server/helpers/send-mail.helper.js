@@ -3,9 +3,9 @@ const nodemailer = require("nodemailer");
 async function main(to, subject, text) {
 
   let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false, 
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, 
     auth: {
       user: process.env.EMAIL, 
       pass: process.env.PASS, 
@@ -15,14 +15,12 @@ async function main(to, subject, text) {
 
   let info = await transporter.sendMail({
     from: `"Todo List App 👻" ${process.env.EMAIL}`,  
-    to: to,  
-    subject: subject,  
-    text: text
+    to: `${to}`,  
+    subject: `${subject}`,  
+    html: `${text}`
   });
 
   console.log("Message sent: %s", info.messageId);
 }
-
-main().catch(console.error);
 
 module.exports= main;

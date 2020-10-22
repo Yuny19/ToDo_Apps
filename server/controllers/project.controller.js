@@ -45,11 +45,11 @@ class ProjectController {
             .then(() => {
                 return ProjectMember.deleteMany({ project: req.params.id });
             })
-            .then(()=>{
+            .then(() => {
                 return Activity.deleteMany({ project: req.params.id });
 
             })
-            .then(()=>{
+            .then(() => {
                 res.status(200).json({
                     message: 'delete success'
                 });
@@ -68,6 +68,16 @@ class ProjectController {
             })
             .catch(err => {
                 res.status(404).json(err.message)
+            })
+    }
+
+    static detail(req, res) {
+        Project.findOne({ _id: req.params.id })
+            .then(data => {
+                res.status(200).json(data);
+            })
+            .catch(err => {
+                res.status(404).json(err.message);
             })
     }
 }

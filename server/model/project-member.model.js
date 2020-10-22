@@ -7,7 +7,7 @@ const projectMemberSchema = new schema({
         ref: 'Project',
         required: 'you must input project'
     },
-    user: {
+    member: {
         type: schema.Types.ObjectId,
         ref: 'Users',
         required: 'you must input member'

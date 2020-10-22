@@ -21,8 +21,10 @@ $(function () {
         $("#login-page").hide();
         $("#container-project").hide();
         $("#task-content").hide();
+        $("#detail-project-content").hide();
     }
 });
+
 
 $("#signOut").click(function () {
     localStorage.removeItem(localStorage.key('token'));
@@ -124,8 +126,101 @@ $("#project").click(function () {
 });
 
 $(document).on("click", "#detail-project", function (event) {
-    console.log($(this).val());
-})
+    $("#container-project").hide();
+    $("#detail-project-content").show();
+
+    $.ajax({
+        url: `${baseUrl}/project/${$(this).val()}`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'GET'
+    })
+        .done(function (data) {
+            let html = "";
+            $("#detail-content").html(html);
+
+            html = '<h2>' + data.name + '</h2>' +
+                '<span>Description : </span>' +
+                '<p>' + data.description + '</p>' +
+                '<button class="btn btn-danger" id="btn-delete-project" value="' + data._id + '"> Delete Project </button> &nbsp;' +
+                '<button class="btn btn-info" id="btn-add-member" data-toggle="modal" data-target="#add-member" value="' + data._id + '">Add Member</button>';
+
+            $("#detail-content").append(html);
+
+        })
+        .catch(function (error) {
+            $.toast({
+                heading: 'Warning',
+                text: 'data not found',
+                showHideTransition: 'slide',
+                icon: 'warning',
+                position: 'top-right'
+            })
+        })
+
+});
+
+$(document).on("click", "#btn-add-member", function(event){
+    $("#project-add").val($(this).val());
+    $.ajax({
+        url: `${baseUrl}/user`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'GET'
+    })
+        .done(function (data) {
+            data.forEach(dt => {
+                $('#select-member-add')
+                    .append($("<option></option>")
+                        .attr("value", dt._id)
+                        .text(dt.name));
+            });
+        })
+        .catch(function (error) {
+            $.toast({
+                heading: 'Warning',
+                text: 'data not found',
+                showHideTransition: 'slide',
+                icon: 'warning',
+                position: 'top-right'
+            })
+        })
+
+});
+
+$(document).on("click","#btn-delete-project", function(event){
+    $.ajax({
+        url: `${baseUrl}/project/${$(this).val()}`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'DELETE'
+    })
+        .done(function () {
+            $.toast({
+                heading: 'Succes',
+                text: 'data have been deleted',
+                showHideTransition: 'slide',
+                icon: 'success',
+                position: 'top-right'
+            });
+
+            $("#container-project").show();
+            $("#detail-project-content").hide();
+
+        })
+        .catch(function (error) {
+            $.toast({
+                heading: 'Warning',
+                text: 'data not found',
+                showHideTransition: 'slide',
+                icon: 'warning',
+                position: 'top-right'
+            })
+        })
+});
 
 
 $("#btn-login").click(function () {
@@ -189,6 +284,9 @@ $("#btn-register").click(function () {
 $("#btn-add-project").click(function () {
     $.ajax({
         url: `${baseUrl}/project`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
         data: {
             name: $("#project-name").val(),
             description: $("#project-desc").val(),
@@ -214,4 +312,125 @@ $("#btn-add-project").click(function () {
             })
         })
 });
+
+$("#btn-add-task").click(function () {
+    //to add select project
+    $.ajax({
+        url: `${baseUrl}/project`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'GET'
+    })
+        .done(function (data) {
+            data.forEach(dt => {
+                $('#select-project')
+                    .append($("<option></option>")
+                        .attr("value", dt._id)
+                        .text(dt.name));
+            });
+        })
+        .catch(function (error) {
+            $.toast({
+                heading: 'Warning',
+                text: 'data not found',
+                showHideTransition: 'slide',
+                icon: 'warning',
+                position: 'top-right'
+            })
+        })
+
+
+});
+$('#select-project').on('change', function () {
+
+    if (this.value !== null) {
+        $.ajax({
+            url: `${baseUrl}/pm/${this.value}`,
+            headers: {
+                token: localStorage.getItem('token')
+            },
+            type: 'GET'
+        })
+            .done(function (data) {
+                data.forEach(dt => {
+                    $('#select-member')
+                        .append($("<option></option>")
+                            .attr("value", dt.member._id)
+                            .text(dt.member.name));
+                });
+            })
+            .catch(function (error) {
+                $.toast({
+                    heading: 'Warning',
+                    text: 'data not found',
+                    showHideTransition: 'slide',
+                    icon: 'warning',
+                    position: 'top-right'
+                })
+            })
+    }
+});
+
+$("#btn-save-task").click(function () {
+
+    $.ajax({
+        url: `${baseUrl}/activity`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        data: {
+            user: $('#select-member option').filter(':selected').val(),
+            task: $("#input-task").val(),
+            project: $('#select-project option').filter(':selected').val()
+        },
+        type: 'POST'
+    })
+        .done(function (data) {
+            $.toast({
+                heading: 'Success',
+                text: 'task have been created',
+                showHideTransition: 'slide',
+                icon: 'success',
+                position: 'top-right'
+            })
+        })
+        .catch(function (error) {
+            $.toast({
+                heading: 'Warning',
+                text: 'cant create task',
+                showHideTransition: 'slide',
+                icon: 'warning',
+                position: 'top-right'
+            })
+        })
+});
+
+$("#btn-back-project").click(function () {
+    $("#container-project").show();
+    $("#detail-project-content").hide();
+});
+
+$("#btn-save-member").click(function(){
+    let member= $('#select-member-add option').filter(':selected').val();
+    let project= $('#project-add').val();
+
+    $.ajax({
+        url: `${baseUrl}/pm/sendMail/${project}/${member}`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'GET'
+    })
+        .done(function (data) {
+            $.toast({
+                heading: 'Info',
+                text: 'Waiting to verification from member',
+                showHideTransition: 'slide',
+                icon: 'info',
+                position: 'top-right'
+            })
+        })
+       
+})
 

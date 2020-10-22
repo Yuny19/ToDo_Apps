@@ -6,6 +6,8 @@ router.post('/', auth, ProjectController.create);
 
 router.get('/', auth, ProjectController.read);
 
+router.get('/:id', ProjectController.detail);
+
 router.put('/:id', auth, ProjectController.update);
 
 router.delete('/:id', auth, ProjectController.delete);

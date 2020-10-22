@@ -151,7 +151,8 @@
         <div class="container">
             <div id="task-content" class="card-body">
                 <div class="mb-1 float-right">
-                    <button class="btn-task"><i class="fa fa-plus" aria-hidden="true"></i> add task</button>
+                    <button id="btn-add-task" class="btn-task" data-toggle="modal" data-target="#add-task"><i
+                            class="fa fa-plus" aria-hidden="true"></i> add task</button>
                 </div>
                 <table class="table table-striped">
                     <thead class="th-teal">
@@ -177,6 +178,16 @@
                 <div id="project-content" class="card-body content-center">
                 </div>
             </div>
+            <div id="detail-project-content">
+                <div class="row">
+                    <div class="col-md-2 py-4">
+                        <button class="btn-back" id="btn-back-project"><i class="fa fa-arrow-left"></i>back</button>
+                    </div>
+                    <div class="col-md-10 offset-4" id="detail-content">
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -194,23 +205,96 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                          <label for="project-name">Name</label>
-                          <input type="text" class="form-control" id="project-name">
+                            <label for="project-name">Name</label>
+                            <input type="text" class="form-control" id="project-name">
                         </div>
                         <div class="form-group">
-                          <label for="project-desc">Description</label>
-                          <input type="text" class="form-control" id="project-desc">
+                            <label for="project-desc">Description</label>
+                            <input type="text" class="form-control" id="project-desc">
                         </div>
-                      </form>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="btn-add-project" class="btn-register">Save</button>
+                    <button type="button" id="btn-add-project" class="btn-register" data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- end modal project -->
+
+    <!-- Modal add task-->
+    <div class="modal fade" id="add-task" tabindex="-1" role="dialog" aria-labelledby="add-task-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add-task-label" style="color: teal;">Add Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="select-project">Select Project</label>
+                            <select class="form-control input-md" id="select-project">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="select-member">Select member</label>
+                            <select class="form-control input-md" id="select-member">
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-task">Task</label>
+                            <input type="text" class="form-control input-md" id="input-task">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btn-save-task" class="btn-register" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal task -->
+
+    <!-- Modal add member-->
+    <div class="modal fade" id="add-member" tabindex="-1" role="dialog" aria-labelledby="add-task-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add-task-label" style="color: teal;">Add Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control input-md" value="" id="project-add">
+                        </div>
+                        <div class="form-group">
+                            <label for="select-member-add">Select member</label>
+                            <select class="form-control input-md" id="select-member-add">
+                                <option selected>select member</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btn-save-member" class="btn-register" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end modal member -->
 </body>
 <script src="../stylesheet/js/index.js"></script>
 
