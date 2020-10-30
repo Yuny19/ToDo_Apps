@@ -10,7 +10,7 @@ activitySchema = new schema({
     project: {
         type: schema.Types.ObjectId,
         ref: 'Project',
-        default:null
+        default: null
     },
     task: {
         type: String,
@@ -26,6 +26,15 @@ activitySchema = new schema({
     }
 });
 
+// activitySchema.pre('save', function (next) {
+//     if (this.project==null) {
+//         this.project = null;
+//         this.user = null;
+//     }
+//     next();
+//     console.log(this.project);
+
+// });
 const Activity = mongoose.model('Activity', activitySchema);
 
 module.exports = Activity;

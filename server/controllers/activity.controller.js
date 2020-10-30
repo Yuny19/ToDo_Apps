@@ -14,6 +14,10 @@ class ActivityController {
     }
 
     static create(req, res) {
+        if (req.body.project==="null") {
+            req.body.project = null;
+            req.body.user = null;
+        }
         Activity.create({
             user: req.body.user,
             project: req.body.project,
